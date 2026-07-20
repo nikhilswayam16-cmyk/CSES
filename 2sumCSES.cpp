@@ -4,49 +4,32 @@
 using namespace std;
 int main()
 {
-long long n, target;
+long long n,target;
 cin>>n>>target;
-vector<long long> v;
-long long temp = n;
-vector<long long> result(2);
-while(n)
+long long k = 1;
+vector<pair<long long,long long>> v;
+for(;k<=n;k++)
 {
-long long t;
-cin>>t;
-v.push_back(t);
-n--;
+long long temp;
+cin>>temp;
+v.push_back({temp,k});
 }
-n = temp;
 sort(v.begin(),v.end());
-long long  i = 0;
-long long j = n-1;
-while(true)
+long long i = 0, j= n-1;
+pair<long long, long long> a= {-1,-1}, b= {-1,-1};
+bool found = false;
+while(i<j)
 {
-if((v[i]+v[j]) > target)
-{
-j--;
-if(j  < i) break;
+long long  sum = v[i].first + v[j].first;
+if(sum < target) i++;
+else if(sum > target) j--;
+else{a=v[i],b=v[j]; found = true; break;}
 }
-else if((v[i]+v[j]) < target)
-{
-i++;
-if(i > j) break;
-}
-else
-{
-result[0] = i;
-result[1] = j;
-break;
-}
-if(i == j) break;
-}
-if(result.empty())
-{
-cout<<"IMPOSSIBLE";
+if(found){
+cout<<a.second<<" "<<b.second;
 }
 else{
-cout<<result[0]<<" "<<result[1];
+cout<<"IMPOSSIBLE";
 }
 return 0;
 }
-
