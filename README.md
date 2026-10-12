@@ -1,1 +1,1 @@
-#######The DP transition from the left to the right allows objects to be used multiple times. Whil\e DP transition from the right to the left allows objects to be used at most once.###############################
+#######The DP transition from the left to the right allows objects to be used multiple times. While DP transition from the right to the left allows objects to be used at most once.###############################
